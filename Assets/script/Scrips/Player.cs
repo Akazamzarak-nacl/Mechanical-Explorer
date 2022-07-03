@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
         CreateDust();
         Time.timeScale = 1;
         if (!source) source = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -40,8 +41,10 @@ public class Player : MonoBehaviour
             Jump();
         }
         if (doubleJump && rb.velocity.y == 0)
+        {
             doubleJump = false;
-
+            animator.SetBool("isjump", false);
+        }
         if (Input.GetKeyDown(KeyCode.F))
         {
             GetComponent<Weapon>().Shoot();
@@ -102,12 +105,15 @@ public class Player : MonoBehaviour
 
         //animator.Play("robot_jump");
 
+        animator.SetBool("isjump", true);
         if (rb.velocity.y == 0)
+        {
             rb.AddForce(Vector2.up * force);
+        }
 
         else if (rb.velocity.y != 0 && !doubleJump)
             DoubleJump();
-
+        //animator.SetBool("isjump", false);
     }
 
     private void DoubleJump()
@@ -115,6 +121,7 @@ public class Player : MonoBehaviour
         rb.AddForce(Vector2.up * (force / 1f));
         //rb.AddForce(Vector2.up * force);
         doubleJump = true;
+       // animator.SetBool("isjump",true);
 
     }
 
