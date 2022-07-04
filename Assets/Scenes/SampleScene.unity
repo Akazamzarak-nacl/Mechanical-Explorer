@@ -6581,8 +6581,8 @@ MonoBehaviour:
   secondaryScore: {fileID: 1563238340}
   hiScoreText: {fileID: 986107659}
   scoreCount: 0
-  pointsPerSecond: 0
-  scoreIncreasing: 0
+  pointsPerSecond: 1
+  scoreIncreasing: 1
   multiplier: 1
   timer: 0
   baseTimeMultiplier: 5
