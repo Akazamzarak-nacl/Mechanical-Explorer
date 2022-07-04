@@ -26,12 +26,11 @@ public class Spawner : MonoBehaviour
 
         if (delta < limit)
         {
-            /*speed += difficultyIncrease;
+            speed += difficultyIncrease;
             pbg.speedBG += difficultyIncrease;
-            pbga.speedBG += difficultyIncrease;*/
+           // pbga.speedBG += difficultyIncrease;
             delta++;
         }
-
         StartCoroutine(Spawn());
     }
 }

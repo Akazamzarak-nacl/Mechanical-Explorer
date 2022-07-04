@@ -42,8 +42,6 @@ public class CoinScrip : MonoBehaviour
                 break;
             }
             print("TENGO LA OBJECTO" + type);
-            
-
             Destroy(gameObject);
         }
     }

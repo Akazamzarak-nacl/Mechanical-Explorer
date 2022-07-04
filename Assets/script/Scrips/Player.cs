@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     public float force;
     private bool pause, doubleJump;
-    public int health = 2;
+    public int health = 4;
     public ScoreManager score;
     public DeadthCreen deathMenu;
     public AudioSource source;
@@ -57,17 +57,18 @@ public class Player : MonoBehaviour
         source.PlayOneShot(clip, volume);
     }
 
-    public void OnTriggerEnter2D(Collider2D choque)
+    public void OnTriggerEnter2D(Collider2D box)
     {
-        if (choque.CompareTag("Enemy"))
+        if (box.CompareTag("Enemy"))
         {
             Damage();
         }
+
     }
 
     public void Damage()
     {
-        animator.Play("Damage");
+       // animator.Play("Damage");
         //Instantiate(hurtSound, transform.position, Quaternion.identity);
 
     }
@@ -109,11 +110,15 @@ public class Player : MonoBehaviour
         if (rb.velocity.y == 0)
         {
             rb.AddForce(Vector2.up * force);
+            animator.SetBool("isjump", false);
+                   
         }
 
         else if (rb.velocity.y != 0 && !doubleJump)
             DoubleJump();
         //animator.SetBool("isjump", false);
+        else if(rb.velocity.y == 0&& doubleJump)
+            animator.SetBool("isjump", false);
     }
 
     private void DoubleJump()
@@ -121,13 +126,14 @@ public class Player : MonoBehaviour
         rb.AddForce(Vector2.up * (force / 1f));
         //rb.AddForce(Vector2.up * force);
         doubleJump = true;
-       // animator.SetBool("isjump",true);
+        animator.SetBool("isjump",true);
 
     }
 
     public void Death()
     {
         Instantiate(deathSound, transform.position, Quaternion.identity);
+        Debug.Log("sile");
         deathMenu.ToggleEndMenu();
 
     }

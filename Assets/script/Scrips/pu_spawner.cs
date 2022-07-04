@@ -30,14 +30,14 @@ public class pu_spawner : MonoBehaviour
         x.GetComponent<Obstacle>().speed = speed;
         Destroy(x, destroyDelay);
         yield return new WaitForSeconds(delay);
-        delay = Random.Range(minTime, maxTime);
-        Debug.Log(delay);
+        //delay = Random.Range(minTime, maxTime);
+        //Debug.Log(delay);
 
             if (delta < limit)
             {
-            speed += difficultyIncrease;
-            delta++;
-            } 
+                speed += difficultyIncrease;
+                delta++;
+            }
         }
         
 
