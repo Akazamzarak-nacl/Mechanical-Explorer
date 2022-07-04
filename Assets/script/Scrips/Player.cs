@@ -49,6 +49,11 @@ public class Player : MonoBehaviour
         {
             GetComponent<Weapon>().Shoot();
         }
+        //如果机器人的x位置小于等于-12，则游戏结束
+        if (transform.position.x <= -12)
+        {
+            MapDamage();
+        }
 
     }
 
@@ -68,7 +73,7 @@ public class Player : MonoBehaviour
 
     public void Damage()
     {
-       // animator.Play("Damage");
+        // animator.Play("Damage");
         //Instantiate(hurtSound, transform.position, Quaternion.identity);
 
     }
@@ -87,6 +92,12 @@ public class Player : MonoBehaviour
             health = 4;
             // Efectitos lindos
         }
+    }
+
+    public void MapDamage()
+    {
+        score.Save();
+        Death();
     }
 
     public void Restart()
@@ -111,13 +122,13 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(Vector2.up * force);
             animator.SetBool("isjump", false);
-                   
+
         }
 
         else if (rb.velocity.y != 0 && !doubleJump)
             DoubleJump();
         //animator.SetBool("isjump", false);
-        else if(rb.velocity.y == 0&& doubleJump)
+        else if (rb.velocity.y == 0 && doubleJump)
             animator.SetBool("isjump", false);
     }
 
@@ -126,7 +137,7 @@ public class Player : MonoBehaviour
         rb.AddForce(Vector2.up * (force / 1f));
         //rb.AddForce(Vector2.up * force);
         doubleJump = true;
-        animator.SetBool("isjump",true);
+        animator.SetBool("isjump", true);
 
     }
 

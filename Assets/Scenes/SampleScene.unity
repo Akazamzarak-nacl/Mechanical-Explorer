@@ -6244,8 +6244,8 @@ MonoBehaviour:
   delay: 4
   destroyDelay: 5
   speed: 4.5
-  difficultyIncrease: 0.25
-  limit: 10
+  difficultyIncrease: 1
+  limit: 20
   obstacles:
   - {fileID: 8157309390313620035, guid: 634b604ddaa50e047b3920cb5575bce5, type: 3}
   - {fileID: 8329489835256858344, guid: 463dd4e55bfbd154cbff13911b2e511c, type: 3}

@@ -28,6 +28,7 @@ public class ScoreManager : MonoBehaviour
 
         if (scoreIncreasing)
             scoreCount += (pointsPerSecond * multiplier) * Time.deltaTime;
+        pointsPerSecond += (float)0.1 * Time.deltaTime;
         scoreText.text = secondaryScore.text = "Score: " + Mathf.Round(scoreCount);
     }
 
