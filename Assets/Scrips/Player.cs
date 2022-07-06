@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
 
     // public ParticleSystem dust;
-    public GameObject pauseMenu;
+    //public GameObject pauseMenu;
     public Animator animator;
     public Rigidbody2D rb;
     public float force;
@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public GameObject deathSound;
 
     public bool secondChance;
+    public bool isDead = false;
 
     public void Start()
     {
@@ -36,9 +37,9 @@ public class Player : MonoBehaviour
             Reset();
             Debug.Log("reinicio");
         }
-       
+
         Jump();
-        Anima();   
+        Anima();
 
         if (doubleJump && rb.velocity.y == 0)
         {
@@ -52,7 +53,12 @@ public class Player : MonoBehaviour
         //如果机器人的x位置小于等于-12，则游戏结束
         if (transform.position.x <= -12)
         {
-            MapDamage();
+            if (!isDead)
+            {
+                MapDamage();
+                isDead = true;
+                Instantiate(deathSound, transform.position, Quaternion.identity);
+            }
         }
 
     }
@@ -98,6 +104,8 @@ public class Player : MonoBehaviour
     {
         score.Save();
         Death();
+        Time.timeScale = 0f;
+        Pause();
     }
 
     public void Restart()
@@ -114,11 +122,11 @@ public class Player : MonoBehaviour
 
     public void Anima()
     {
-        if(rb.velocity.y==0 )
+        if (rb.velocity.y == 0)
         {
             animator.Play("robot_run");
         }
-        if(rb.velocity.y>0)
+        if (rb.velocity.y > 0)
         {
             animator.Play("robot_jump");
         }
@@ -134,13 +142,13 @@ public class Player : MonoBehaviour
             if (rb.velocity.y == 0)
             {
                 rb.AddForce(Vector2.up * force);
-               
+
 
             }
 
             else if (rb.velocity.y != 0 && !doubleJump)
                 DoubleJump();
-           
+
         }
     }
 
@@ -149,22 +157,20 @@ public class Player : MonoBehaviour
         rb.AddForce(Vector2.up * (force / 1f));
         //rb.AddForce(Vector2.up * force);
         doubleJump = true;
-       
+
 
     }
 
     public void Death()
     {
-        Instantiate(deathSound, transform.position, Quaternion.identity);
         Debug.Log("sile");
         deathMenu.ToggleEndMenu();
-
     }
 
     public void Pause()
     {
         pause = !pause;
-        pauseMenu.SetActive(pause);
+        //pauseMenu.SetActive(pause);
         score.scoreIncreasing = !pause;
         if (pause)
             Time.timeScale = 0;

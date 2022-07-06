@@ -140,6 +140,7 @@ MonoBehaviour:
   speed: 5
   rb: {fileID: 3550794813777852021}
   damage: 1
+  impactEffect: {fileID: 494435122267601073, guid: 5f5809691849c1447b674405bfe22d8b, type: 3}
 --- !u!95 &7758273804590254512
 Animator:
   serializedVersion: 4
