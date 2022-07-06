@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
     public float delay, destroyDelay, speed, difficultyIncrease;
     public int limit;
     public GameObject[] obstacles;
-    public ParalaxBG pbg, pbga;
+    public ParalaxBG pbg;
     private int delta = 0;
 
     private void Start()

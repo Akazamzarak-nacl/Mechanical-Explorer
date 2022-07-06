@@ -7,13 +7,13 @@ public class Enemy : MonoBehaviour
 {
 
     [SerializeField]
-    private CoinScrip coinM;
+   // private CoinScrip coinM;
     public GameObject explocionSound;
     public int enemyHealth = 2;
     public GameObject deathEfect;
     private float destroyTime =1;
     public int enemyDamage = 1;
-    public GameObject coin;
+    //public GameObject coin;
 
     public void TakeDamage(int damage)
     {
@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
     }
     void Die()
     {
-        Instantiate(coin, transform.position, Quaternion.identity);
+       // Instantiate(coin, transform.position, Quaternion.identity);
         Instantiate(deathEfect, transform.position, Quaternion.identity);
         //coinM = FindObjectOfType<CoinScrip>();
         Destroy(gameObject);
