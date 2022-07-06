@@ -36,10 +36,10 @@ public class Player : MonoBehaviour
             Reset();
             Debug.Log("reinicio");
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
+       
+        Jump();
+        Anima();   
+
         if (doubleJump && rb.velocity.y == 0)
         {
             doubleJump = false;
@@ -112,24 +112,36 @@ public class Player : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void Anima()
+    {
+        if(rb.velocity.y==0 )
+        {
+            animator.Play("robot_run");
+        }
+        if(rb.velocity.y>0)
+        {
+            animator.Play("robot_jump");
+        }
+    }
+
     public void Jump()
     {
 
         //animator.Play("robot_jump");
 
-        animator.SetBool("isjump", true);
-        if (rb.velocity.y == 0)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.AddForce(Vector2.up * force);
-            animator.SetBool("isjump", false);
+            if (rb.velocity.y == 0)
+            {
+                rb.AddForce(Vector2.up * force);
+               
 
+            }
+
+            else if (rb.velocity.y != 0 && !doubleJump)
+                DoubleJump();
+           
         }
-
-        else if (rb.velocity.y != 0 && !doubleJump)
-            DoubleJump();
-        //animator.SetBool("isjump", false);
-        else if (rb.velocity.y == 0 && doubleJump)
-            animator.SetBool("isjump", false);
     }
 
     private void DoubleJump()
@@ -137,7 +149,7 @@ public class Player : MonoBehaviour
         rb.AddForce(Vector2.up * (force / 1f));
         //rb.AddForce(Vector2.up * force);
         doubleJump = true;
-        animator.SetBool("isjump", true);
+       
 
     }
 
