@@ -3547,12 +3547,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b292415fdb27f54a83a714c1f94d749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 8
+  delay: 5
   destroyDelay: 5
   speed: 4.5
   difficultyIncrease: 0.25
   limit: 10
-  minTime: 8
+  minTime: 5
   maxTime: 10
   positions:
   - {fileID: 1919177091}
@@ -6241,10 +6241,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c7774fff3bd0304c99df47b32bf7b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 4
+  delay: 2.5
   destroyDelay: 5
   speed: 4.5
-  difficultyIncrease: 1
+  difficultyIncrease: 0.25
   limit: 20
   obstacles:
   - {fileID: 8157309390313620035, guid: 634b604ddaa50e047b3920cb5575bce5, type: 3}
@@ -6909,7 +6909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3125401683817117591, guid: 0abfdd8e7bd81d14dba9e5f339ac085d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.17
+      value: -6.57
       objectReference: {fileID: 0}
     - target: {fileID: 3125401683817117591, guid: 0abfdd8e7bd81d14dba9e5f339ac085d, type: 3}
       propertyPath: m_LocalPosition.y

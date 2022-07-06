@@ -14,23 +14,27 @@ public class pu_spawner : MonoBehaviour
     public GameObject[] powers;
 
     public bool poderes = false;
+    int judge = 1;
     private void Start()
     {
-        StartCoroutine(Spawn(true));
+        StartCoroutine(Spawn());
     }
 
-    public IEnumerator Spawn(bool on)
+    public IEnumerator Spawn()
     {
-        while (on == true)
-        {
+        
+        judge++;
         int prefab = Random.Range(0, powers.Length); 
         int posSpawn = Random.Range(0, positions.Length);
-        
-        GameObject x = Instantiate<GameObject>(powers[prefab], positions[posSpawn].transform.position, powers[prefab].transform.rotation);
-        x.GetComponent<Obstacle>().speed = speed;
-        Destroy(x, destroyDelay);
+        if (judge%3==0)
+        {
+            GameObject x = Instantiate<GameObject>(powers[prefab], positions[posSpawn].transform.position, powers[prefab].transform.rotation);
+            x.GetComponent<Obstacle>().speed = speed;
+            Destroy(x, destroyDelay);
+           
+        }
         yield return new WaitForSeconds(delay);
-        //delay = Random.Range(minTime, maxTime);
+        delay = Random.Range(minTime, maxTime);
         //Debug.Log(delay);
 
             if (delta < limit)
@@ -38,7 +42,8 @@ public class pu_spawner : MonoBehaviour
                 speed += difficultyIncrease;
                 delta++;
             }
-        }
+            StartCoroutine(Spawn());
+       /* }*/
         
 
         
