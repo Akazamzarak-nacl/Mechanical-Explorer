@@ -10,4 +10,8 @@ public class ScenesManager : MonoBehaviour
         //切换到SampleScene场景
         SceneManager.LoadScene("SampleScene");
     }
+    public void Help()
+    {
+        SceneManager.LoadScene("Help");
+    }
 }

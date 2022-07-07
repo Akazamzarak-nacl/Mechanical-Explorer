@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     public bool secondChance;
     public bool isDead = false;
 
+    public PauseMenu P;
+
     public void Start()
     {
         CreateDust();
@@ -34,11 +36,22 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Reset();
-            Debug.Log("reinicio");
+            Restart();
+            //Debug.Log("reinicio");
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (PauseMenu.GameIsPaused)
+            {
+                P.Resume();
+            }
+            else
+            {
+                P.Pause();
+            }
         }
 
-        Jump();
+            Jump();
         Anima();
 
         if (doubleJump && rb.velocity.y == 0)
@@ -117,7 +130,7 @@ public class Player : MonoBehaviour
     public void Menu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Scene1");
     }
 
     public void Anima()

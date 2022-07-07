@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CoinCounter : MonoBehaviour
 {
     public int coinValue;
-    public Text coinScore;
+    public TextMeshProUGUI coinScore;
     public float timer, multiplier = 1, baseTimeMultiplier = 5f, multBase = 2f;
 
     void Start()
     {
-        if(PlayerPrefs.HasKey("Coins")){
+        coinValue = 1;
+        if (PlayerPrefs.HasKey("Coins")){
             coinValue = PlayerPrefs.GetInt("Coins");
         }
 
@@ -30,6 +32,7 @@ public class CoinCounter : MonoBehaviour
     {
         if (timer > 0) timer -= Time.deltaTime;
         else if (timer <= 0 && multiplier > 1) multiplier = 1;
+        coinScore.text = " " + coinValue;
     }
 
     public void PUPMult()
@@ -37,5 +40,9 @@ public class CoinCounter : MonoBehaviour
         if (timer <= 0) timer += baseTimeMultiplier;
         else timer = baseTimeMultiplier;
         multiplier = multBase;
+    }
+    public void Pluscoin()
+    {
+        coinValue += 2;
     }
 }
