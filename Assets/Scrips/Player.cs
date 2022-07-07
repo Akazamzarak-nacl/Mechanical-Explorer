@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     public GameObject deathSound;
 
     public bool secondChance;
-    public bool isDead = false;
+    public static bool  isDead = false;
 
     public PauseMenu P;
 
@@ -123,8 +123,13 @@ public class Player : MonoBehaviour
 
     public void Restart()
     {
+        isDead = false;
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        CreateDust();
+        Time.timeScale = 1;
+        if (!source) source = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
     public void Menu()

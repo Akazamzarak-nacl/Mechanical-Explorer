@@ -163,4 +163,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 5543271441865747740, guid: 4eae8d75d523212449452e3b69902893, type: 3}
   powerSound: {fileID: 6411281718405438470, guid: 0b391222293e2c64694a1bd7bb0bc252, type: 3}
-  type: 1
+  type: 0
