@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     public GameObject deathSound;
 
     public bool secondChance;
-    public static bool  isDead = false;
+    public static bool isDead = false;
 
     public PauseMenu P;
 
@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
             }
         }
 
-            Jump();
+        Jump();
         Anima();
 
         if (doubleJump && rb.velocity.y == 0)
@@ -105,6 +105,7 @@ public class Player : MonoBehaviour
             score.Save();
 
             Death();
+            Instantiate(deathSound, transform.position, Quaternion.identity);
         }
         else if (health <= 0 && secondChance)
         {
@@ -130,6 +131,7 @@ public class Player : MonoBehaviour
         Time.timeScale = 1;
         if (!source) source = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
+        PauseMenu.GameIsPaused = false;
     }
 
     public void Menu()

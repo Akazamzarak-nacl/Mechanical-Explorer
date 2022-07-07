@@ -22,7 +22,7 @@ public class PauseMenu : MonoBehaviour
         {
             Pause();
         }
-        
+
     }
 
     public void Resume()

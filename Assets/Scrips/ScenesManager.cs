@@ -14,4 +14,8 @@ public class ScenesManager : MonoBehaviour
     {
         SceneManager.LoadScene("Help");
     }
+    public void Exit()
+    {
+        SceneManager.LoadScene("Scene1");
+    }
 }

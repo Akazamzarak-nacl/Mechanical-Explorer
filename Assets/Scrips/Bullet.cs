@@ -21,12 +21,14 @@ public class Bullet : MonoBehaviour
         {
             hitInfo.GetComponent<Enemy>().TakeDamage(damage);
             Destroy(gameObject);
+            Instantiate(impactEffect, transform.position, Quaternion.identity);
         }
         if (hitInfo.gameObject.CompareTag("Obstacule"))
         {
             Destroy(gameObject);
+            Instantiate(impactEffect, transform.position, Quaternion.identity);
         }
-        Instantiate(impactEffect, transform.position, Quaternion.identity);
+
     }
 
 }

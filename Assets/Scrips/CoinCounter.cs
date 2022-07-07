@@ -12,16 +12,16 @@ public class CoinCounter : MonoBehaviour
 
     void Start()
     {
-        coinValue = 1;
-        if (PlayerPrefs.HasKey("Coins")){
-            coinValue = PlayerPrefs.GetInt("Coins");
-        }
+        coinValue = 0;
+        // if (PlayerPrefs.HasKey("Coins")){
+        //     coinValue = PlayerPrefs.GetInt("Coins");
+        // }
 
-        coinScore.text = "" +  coinValue;
+        coinScore.text = "" + coinValue;
     }
     public void GetCoin()
     {
-        
+
         coinScore.text = " " + coinValue;
         coinValue += 1 * (int)multiplier;
         coinScore.text = " " + coinValue;
