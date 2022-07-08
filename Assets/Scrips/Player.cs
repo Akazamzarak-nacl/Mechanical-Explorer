@@ -14,9 +14,14 @@ public class Player : MonoBehaviour
     public float force;
     private bool pause, doubleJump;
     public int health = 4;
+    public float blinkTime;
+    public int blinks;
+
     public ScoreManager score;
     public DeadthCreen deathMenu;
     public AudioSource source;
+
+    private Renderer myRender;
 
     public GameObject deathSound;
 
@@ -31,6 +36,7 @@ public class Player : MonoBehaviour
         Time.timeScale = 1;
         if (!source) source = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
+        myRender = GetComponent<Renderer>();
     }
     private void Update()
     {
@@ -94,8 +100,24 @@ public class Player : MonoBehaviour
     {
         // animator.Play("Damage");
         //Instantiate(hurtSound, transform.position, Quaternion.identity);
-
+        BlinkPlayer(blinks, blinkTime);
     }
+
+    void BlinkPlayer(int numBlinks, float seconds)
+    {
+        StartCoroutine(DoBlinks(numBlinks, seconds));
+    }
+
+    IEnumerator DoBlinks(int numBlinks, float seconds)
+    {
+        for (int i = 0; i < numBlinks * 2; i++)
+        {
+            myRender.enabled = !myRender.enabled;
+            yield return new WaitForSeconds(seconds);
+        }
+        myRender.enabled = true;
+    }
+
 
     public void EnemyDamage(int dmg)
     {
