@@ -159,6 +159,7 @@ public class Player : MonoBehaviour
     public void Menu()
     {
         Time.timeScale = 1;
+        PauseMenu.GameIsPaused = false;
         SceneManager.LoadScene("Scene1");
     }
 

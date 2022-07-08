@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  obstacleDamage: 2
+  obstacleDamage: 0
 --- !u!114 &3543167216045433333
 MonoBehaviour:
   m_ObjectHideFlags: 0

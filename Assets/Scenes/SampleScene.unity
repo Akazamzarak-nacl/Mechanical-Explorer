@@ -5632,9 +5632,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1065116226}
-        m_TargetAssemblyTypeName: ScenesManager, Assembly-CSharp
-        m_MethodName: Exit
+      - m_Target: {fileID: 1065116225}
+        m_TargetAssemblyTypeName: Exit, Assembly-CSharp
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7921,7 +7921,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9554,7 +9554,7 @@ MonoBehaviour:
   destroyDelay: 5
   speed: 4.5
   difficultyIncrease: 0.25
-  limit: 20
+  limit: 50
   obstacles:
   - {fileID: 8157309390313620035, guid: 634b604ddaa50e047b3920cb5575bce5, type: 3}
   - {fileID: 8329489835256858344, guid: 463dd4e55bfbd154cbff13911b2e511c, type: 3}
